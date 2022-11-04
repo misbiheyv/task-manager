@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hovered {
+            height: 200px;
+            aspect-ratio: 1;
+
+            background-color: #50f;
+            transition: ease-out .2s;
+        }
+
+        .hovered:hover {
+            background-color: #e0f;
+        }
+
+        .thread {
+            border: solid 1px gray;
+            border-radius: 5px;
+
+            height: 20px;
+            width: max-content;
+            padding: 5px 10px;
+        }
+
+        .mt-10 {
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="hovered"></div>
+    <div id="thread-1" class="thread mt-10">thread 1:</div>
+    <div id="thread-2" class="thread mt-10">thread 2:</div>
+    <div id="thread-3" class="thread mt-10">thread 3:</div>
+    <div id="thread-4" class="thread mt-10">thread 4:</div>
+</body>
+</html>
