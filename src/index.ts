@@ -1,4 +1,5 @@
 import createTaskManager from "./task-manager";
+import { PRIORITIES } from "./priorities";
 
 const taskManager = createTaskManager({
     execDuration: 100,
@@ -6,20 +7,25 @@ const taskManager = createTaskManager({
     priority: true
 });
 
-taskManager.forEach(new Array(1_000_000), (_, i) => {
-    document.getElementById('thread-1')!.innerHTML = `${i}`
-}, "LOW").then((res) => {
-    console.log('1 end', res)
-})
+const priorityList: Array<keyof typeof PRIORITIES> = ['LOW', 'NORMAL', 'HIGHT', 'CRITICAL'];
 
-taskManager.forEach(new Array(1_000_000), (_, i) => {
-    document.getElementById('thread-2')!.innerHTML = `${i}`
-}, "NORMAL").then((res) => {
-    console.log('2 end', res)
-})
+for (let i = 0; i < 15; i++) {
+    const 
+        priority = Math.random() * 4 | 0,
+        id = `thread-${i + 1}`,
+        node = document.createElement('div');
 
-taskManager.forEach(new Array(1_000_000), (_, i) => {
-    document.getElementById('thread-3')!.innerHTML = `${i}`
-}, "CRITICAL").then((res) => {
-    console.log('3 end', res)
-})
+    node.innerHTML = `${priorityList[priority]} - `;
+    node.classList.add('thread', 'mt-10', `thread-${priorityList[priority].toLowerCase()}`);
+    node.appendChild(document.createElement('span')).id = id;
+
+    document.getElementById('container')?.appendChild(node)
+    
+    const timeStart = Date.now()
+
+    taskManager.forEach(new Array(500_000), (_, i) => {
+        document.getElementById(id)!.innerHTML = `${i}`
+    }, priorityList[priority]).then(() => {
+        document.getElementById(id)!.innerHTML = `reached in ${(Date.now() - timeStart) / 1000} seconds.`
+    })
+}

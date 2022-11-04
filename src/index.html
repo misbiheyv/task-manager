@@ -6,16 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        html {
+            font-family:sans-serif;
+        }
         .hovered {
             height: 200px;
             aspect-ratio: 1;
 
-            background-color: #50f;
+            background-color: rgb(65, 2, 190);
             transition: ease-out .2s;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: white;
         }
 
         .hovered:hover {
-            background-color: #e0f;
+            background-color: rgb(178, 64, 186);
         }
 
         .thread {
@@ -26,6 +35,22 @@
             width: max-content;
             padding: 5px 10px;
         }
+        .thread-critical {
+            background: rgba(112, 6, 148, 0.6);
+            border: solid 1px rgb(44, 2, 53);
+        }
+        .thread-hight {
+            background: rgba(148, 6, 6, 0.6);
+            border: solid 1px rgb(82, 3, 3);
+        }
+        .thread-normal {
+            background: rgba(237, 181, 25, 0.6);
+            border: solid 1px rgb(193, 130, 29);
+        }
+        .thread-low {
+            background: rgba(25, 237, 81, 0.6);
+            border: solid 1px rgb(4, 128, 26);
+        }
 
         .mt-10 {
             margin-top: 10px;
@@ -34,10 +59,7 @@
     </style>
 </head>
 <body>
-    <div class="hovered"></div>
-    <div id="thread-1" class="thread mt-10">thread 1:</div>
-    <div id="thread-2" class="thread mt-10">thread 2:</div>
-    <div id="thread-3" class="thread mt-10">thread 3:</div>
-    <div id="thread-4" class="thread mt-10">thread 4:</div>
+    <div class="hovered">hover me!</div>
+    <div id="container"></div>
 </body>
 </html>
